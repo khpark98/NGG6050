@@ -1,7 +1,7 @@
 % Kristen Park 
 % September 13, 2023
 % NGG 6050 
-% Homework #3
+% Homework #4
 
 clear
 close all 
@@ -61,6 +61,21 @@ for i = 1:length(n)
     fprintf('3 : CI=[%.3f, %.3f]\n', lower, upper);
 
     %% 4. Bayesian credible intervals 
+
+    % Calculate the posterior distribution parameters using Bayesian inference
+    % Assuming a normal distribution for the posterior
+    prior_mean = mu;
+    prior_std = sigma; 
+    true_mean = mu;
+    true_std = sigma; 
+    posterior_mean = (prior_mean / (prior_std^2) + sum(data) / (true_std^2)) / ...
+        ((1 / (prior_std^2)) + (n(i) / (true_std^2)));
+    posterior_std = sqrt(1 / ((1 / (prior_std^2)) + (n(i) / (true_std^2))));
+    
+    % Compute the credible interval using percentiles of the posterior distribution
+    lower = norminv((1-alpha)/2, posterior_mean, posterior_std);
+    upper= norminv(1 - ((1-alpha)/2), posterior_mean, posterior_std);
+    fprintf('4 : CI=[%.3f, %.3f]\n', lower, upper);
 
 
 end
