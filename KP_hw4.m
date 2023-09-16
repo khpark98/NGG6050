@@ -14,7 +14,7 @@ close all
 mu = 10; %mean
 sigma = 2; %stdev 
 n = [5, 10, 20, 40, 80, 160, 1000]; %n 
-alpha = 0.95; 
+alpha = 0.05; 
 
 
 for i = 1:length(n)
@@ -76,7 +76,6 @@ for i = 1:length(n)
     lower = norminv((1-alpha)/2, posterior_mean, posterior_std);
     upper= norminv(1 - ((1-alpha)/2), posterior_mean, posterior_std);
     fprintf('4 : CI=[%.3f, %.3f]\n', lower, upper);
-
 
 end
 
