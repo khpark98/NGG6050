@@ -1,7 +1,7 @@
 % Kristen Park 
 % September 16, 2023
 % NGG 6050 
-% Homework #5
+% Homework #8
 % Parametric Correlation Coefficient
 
 clear
